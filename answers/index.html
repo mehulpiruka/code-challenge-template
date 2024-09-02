@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Data API Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>Weather Data API Documentation</h1>
+
+<p>This API provides access to weather data and calculated statistics from various weather stations.</p>
+
+<h2>Endpoints</h2>
+
+<ul>
+    <li>**`/api/weather/` (GET):** Retrieve weather data.</li>
+    <li>**`/api/weather/stats` (GET):** Retrieve weather statistics.</li>
+    <li>**`/api/weather/stats_now` (GET):** Update weather statistics (triggers recalculation).</li>
+</ul>
+
+<h2>Data Availability</h2>
+
+<ul>
+    <li>Weather data includes daily records for station location, date, maximum temperature, minimum temperature, and precipitation.</li>
+    <li>Weather statistics include yearly averages for maximum temperature, minimum temperature, and total precipitation.</li>
+</ul>
+
+<h2>Filtering</h2>
+
+Both `/api/weather/` and `/api/weather/stats` endpoints support filtering by:
+
+<ul>
+    <li>`year_from`/'date_from': Filter weather data/statistics starting from a specific year/date.</li>
+    <li>`year_to`/'date_to': Filter weather data/statistics ending at a specific year/date .</li>
+    <li>`station_id`: Filter weather data/statistics for a specific station (by ID).</li>
+</ul>
+
+<h2>Pagination</h2>
+
+The `/api/weather/` endpoint supports pagination for retrieving large datasets:
+
+<ul>
+    <li>`page`: Specify the desired page number (defaults to 1).</li>
+    <li>`per_page`: Define the number of records per page (defaults to 10).</li>
+</ul>
+
+<h2>Response Format</h2>
+
+All API responses are returned in JSON format.
+
+<h2>Detailed Endpoint Descriptions</h2>
+
+<h3>### 1. `/api/weather/` (GET) </h3>
+
+This endpoint retrieves weather data based on the provided filters and pagination parameters.
+
+**Request Parameters:**
+
+* `year_from` (optional): Filter by year (YYYY format).
+* `year_to` (optional): Filter by year (YYYY format).
+* `station_id` (optional): Filter by station ID.
+* `page` (optional): Page number (defaults to 1).
+* `per_page` (optional): Records per page (defaults to 10).
+
+**Response:**
+
+```json
+[
+  {
+    "station_id": 1,
+    "station_name": "Station A",
+    "station_location": "City X",
+    "date": "2023-09-02",  # Formatted date string
+    "max_temp": 25.4,
+    "min_temp": 17.2,
+    "precipitation": 0.3
+  },
+  // ... more records based on filters and pagination
+]
+<br/>
+My Answers to AWS <a href="/aws" target="_blank">  Deployment </a>
+<br/>
+Find me at <a href="https://www.linkedin.com/in/mehul-piruka/" target="_blank"> Linkedin</a>
+<br/>

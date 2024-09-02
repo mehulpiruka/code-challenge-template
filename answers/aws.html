@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Proposed AWS Services</title>
+</head>
+<body>
+<h2>Proposed AWS Services</h2>
+
+<ul>
+    <li><strong>Amazon Elastic Compute Cloud (EC2)</strong></li>
+    <ul>
+        <li>Host the Flask application serving the REST API.</li>
+        <li>Choose an appropriate instance type based on your expected traffic and resource requirements.</li>
+    </ul>
+    <li><strong>Amazon Relational Database Service (RDS)</strong></li>
+    <ul>
+        <li>Manage the PostgreSQL database for storing weather data and statistics.</li>
+        <li>Select a suitable instance type and storage size.</li>
+        <li>Configure database settings and security.</li>
+    </ul>
+    <h3><i>OR</i> </h3>
+        <li><strong>Amazon NoSQL DB like Dynamodb / DocumentDB</strong></li>
+    <ul>
+        <li>Manage the Schema with each station or year as Nodes & values related as edges
+        <ul>
+        <li> This is depended also on queries performed on the DB </li>
+        </ul>
+        </li>
+        <li>Configure database settings and security.</li>
+    </ul>
+    <h3><i>OR</i> </h3>
+        <li><strong>Create External Tables on top of S3 files </strong></li>
+    <ul>
+        <li>If we have so much data intake , we can perform ETLs & write them as delta format
+        this will help in faster queries</li>
+    </ul>
+    <li><strong>AWS Lambda</strong></li>
+    <ul>
+        <li>Create a Lambda function to handle the data ingestion task.</li>
+        <li>Trigger the Lambda function using AWS CloudWatch Events on a schedule (e.g., daily, hourly).</li>
+        <li>The Lambda function can use the Boto3 library to interact with S3 (where the weather data files are stored) and the RDS database.</li>
+    </ul>
+    <li><strong>Amazon Simple Storage Service (S3)</strong></li>
+    <ul>
+        <li>Store the raw weather data files.</li>
+        <li>Configure S3 bucket permissions to allow the Lambda function to access the files.</li>
+    </ul>
+</ul>
+</body>
+</html>
